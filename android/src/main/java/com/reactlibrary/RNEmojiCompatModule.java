@@ -7,6 +7,7 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 
 import android.support.text.emoji.EmojiCompat;
+import android.R;
 
 public class RNEmojiCompatModule extends ReactContextBaseJavaModule {
 
@@ -26,9 +27,9 @@ public class RNEmojiCompatModule extends ReactContextBaseJavaModule {
   public void getProcessedEmojiString(String inputString, Callback successCallback, Callback errorCallback) {
     try {
       CharSequence processed = EmojiCompat.get().process(inputString);
-      successCallback.invoke(processed)
-    } catch() {
-      errorCallback.invoke("EmojiCompat: Cannot process emoji string") 
+      successCallback.invoke(processed);
+    } catch(Error error) {
+      errorCallback.invoke("EmojiCompat: Cannot process emoji string");
     }
   }
 }
